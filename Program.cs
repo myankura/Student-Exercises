@@ -13,7 +13,7 @@ namespace StudentExercises
 
             Exercise dictionaries = new Exercise(3, "Dictionaries", "C#");
 
-            Exercise dataTypes = new Exercise(4, "Data Types", "C#");
+            Exercise dailyJournal = new Exercise(4, "Daily Journal", "JavaScript");
 
             //create cohorts
             Cohort c31 = new Cohort(31, "C31");
@@ -63,12 +63,31 @@ namespace StudentExercises
 
             //assign exercises to students
             andy.AssignExercise(juan, lists);
-            andy.AssignExercise(ken, classes);
-            andy.AssignExercise(ken, dictionaries);
+            andy.AssignExercise(juan, classes);
+            andy.AssignExercise(billy, dictionaries);
             andy.AssignExercise(ken, lists);
-            andy.AssignExercise(ken, dataTypes);
-            andy.AssignExercise(mike, dataTypes);
+            andy.AssignExercise(ken, dailyJournal);
+            andy.AssignExercise(mike, dailyJournal);
             andy.AssignExercise(billy, classes);
+            andy.AssignExercise(mike, dictionaries);
+
+            jisie.AssignExercise(mike, lists);
+            jisie.AssignExercise(ken, classes);
+            jisie.AssignExercise(juan, dictionaries);
+            jisie.AssignExercise(ken, lists);
+            jisie.AssignExercise(juan, dailyJournal);
+            jisie.AssignExercise(mike, dailyJournal);
+            jisie.AssignExercise(billy, classes);
+            jisie.AssignExercise(mike, dictionaries);
+
+            joe.AssignExercise(juan, lists);
+            joe.AssignExercise(juan, classes);
+            joe.AssignExercise(billy, dictionaries);
+            joe.AssignExercise(ken, lists);
+            joe.AssignExercise(ken, dailyJournal);
+            joe.AssignExercise(mike, dailyJournal);
+            joe.AssignExercise(billy, classes);
+            joe.AssignExercise(mike, dictionaries);
         }
     }
 }
