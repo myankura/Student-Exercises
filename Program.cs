@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StudentExercises
 {
@@ -15,6 +17,17 @@ namespace StudentExercises
 
             Exercise dailyJournal = new Exercise(4, "Daily Journal", "JavaScript");
 
+            Exercise chickenMonkey = new Exercise(5, "Chicken Monkey", "JavaScript");
+
+            List<Exercise> exercises = new List<Exercise>() {
+                lists, classes, dictionaries, dailyJournal, chickenMonkey
+            };
+
+            
+
+            
+
+
             //create cohorts
             Cohort c31 = new Cohort(31, "C31");
 
@@ -22,44 +35,50 @@ namespace StudentExercises
 
             Cohort c33 = new Cohort(33, "C33");
 
+            List<Cohort> cohorts = new List<Cohort>(){
+                c31, c32, c33
+            };
+
+
             //create students
-            Student juan = new Student(1, "Juan", "Solo", "juan.solo");
+            Student juan = new Student(1, "Juan", "Solo", "juan.solo", 31);
 
-            Student ken = new Student(2, "Ken", "M", "ken.m");
+            Student ken = new Student(2, "Ken", "M", "ken.m", 32);
 
-            Student mike = new Student(3, "Mike", "Jones", "mike.jones");
+            Student mike = new Student(3, "Mike", "Jones", "mike.jones", 33);
 
-            Student billy = new Student(4, "Billy", "Mays", "billy.mays");
+            Student billy = new Student(4, "Billy", "Mays", "billy.mays", 31);
+
+            Student tom = new Student(5, "Tom", "Foolery", "tom", 31);
+
+            List<Student> students = new List<Student>() {
+                juan, ken, mike, billy, tom
+            };
 
             //create instructors
-            Instructor andy = new Instructor(1, "Andy", "Collins", "andy.collins", "Jokes");
+            Instructor andy = new Instructor(1, "Andy", "Collins", "andy.collins", "Jokes", 31);
 
-            Instructor jisie = new Instructor(2, "Jisie", "David", "jisie", "Frontend development");
+            Instructor jisie = new Instructor(2, "Jisie", "David", "jisie", "Sneaking up on people in a boot.", 33);
 
-            Instructor joe = new Instructor(3, "Joe", "Sheppard", "joe.shep", "Dad Jokes");
+            Instructor joe = new Instructor(3, "Joe", "Sheppard", "joe.shep", "Dad Jokes", 32);
+
+            List<Instructor> instructors = new List<Instructor>() {
+                jisie, joe, andy
+            };
 
             //add students to cohort
             c31.StudentList.Add(juan);
-            juan.Cohort = c31;
-
             c31.StudentList.Add(ken);
-            ken.Cohort = c31;
-
             c31.StudentList.Add(mike);
-            mike.Cohort = c31;
-
             c31.StudentList.Add(billy);
-            billy.Cohort = c31;
+            c32.StudentList.Add(tom);
+            
 
             //assign instructors to a cohort
             c31.InstructorList.Add(andy);
-            andy.Cohort = c31;
-
             c31.InstructorList.Add(jisie);
-            jisie.Cohort = c33;
-
             c31.InstructorList.Add(joe);
-            joe.Cohort = c32;
+            
 
             //assign exercises to students
             andy.AssignExercise(juan, lists);
@@ -88,6 +107,106 @@ namespace StudentExercises
             joe.AssignExercise(mike, dailyJournal);
             joe.AssignExercise(billy, classes);
             joe.AssignExercise(mike, dictionaries);
+
+
+
+            //1. List exercises for the JavaScript language by using the Where() LINQ method.
+            IEnumerable<Exercise> jsExercises =
+                from exercise in exercises
+                where exercise.Language is "JavaScript"
+                select exercise;
+
+            Console.WriteLine("The following exercises use JavaScript:");
+
+            foreach (Exercise ex in jsExercises)
+            {
+                Console.WriteLine($"{ex.Id}. {ex.ExerciseName}");
+            }
+            Console.WriteLine();
+
+            //2. List students in a particular cohort by using the Where() LINQ method.
+            IEnumerable<Student> chrt31Students =
+                from student in students
+                where student.CohortId is 31
+                select student;
+
+            Console.WriteLine("The following students are in Cohort 31:");
+
+            foreach (Student c in chrt31Students)
+            {
+                Console.WriteLine($"{c.FirstName} {c.LastName}");
+            }
+            Console.WriteLine();
+
+            //3. List instructors in a particular cohort by using the Where() LINQ method.
+            IEnumerable<Instructor> c31Instructor =
+                from instructor in instructors
+                where instructor.CohortId is 31
+                select instructor;
+
+            Console.WriteLine("The following instructor(s) is/are leading Cohort 31:");
+
+            foreach (Instructor i in c31Instructor)
+            {
+                Console.WriteLine($"{i.FirstName} {i.LastName}");
+            }
+            Console.WriteLine();
+
+            //4. Sort the students by their last name.
+            IEnumerable<Student> stuLastNames =
+                from student in students
+                orderby student.LastName descending
+                select student;
+
+            Console.WriteLine("This list orders students by last name descending:");
+            foreach (Student stu in stuLastNames)
+            {
+                Console.WriteLine($"{stu.LastName} {stu.FirstName}");
+            }
+            Console.WriteLine();
+
+            //5. Display any students that aren't working on any exercises 
+            //(Make sure one of your student instances don't have any exercises. Create a new student if you need to.)
+            IEnumerable<Student> stuWithNoExercises =
+                from ex in students
+                where ex.ExerciseList.Count() == 0 
+                select ex;
+
+            Console.WriteLine("The following students are not currently working on any exercises:");
+            foreach (Student ex in stuWithNoExercises)
+            {
+                Console.WriteLine($"{ex.FirstName} {ex.LastName}");
+            }
+            Console.WriteLine();
+
+            //6. Which student is working on the most exercises? Make sure one of your 
+            //students has more exercises than the others.
+            IEnumerable<Student> stuWithMostExercises =
+                (from ex in students
+                 where ex.ExerciseList
+                 select ex).Max();
+
+            //int mostExercises =
+            //    (from ex in students
+            //     where ex.ExerciseList
+            //     select ex).Max();
+
+
+
+
+
+
+            //Create a report of all the exercises students are currently working on.
+            foreach (Student stu in students)
+            {
+                Console.WriteLine($"{stu.FirstName} {stu.LastName} is currently working on: ");
+                foreach(Exercise stuEx in stu.ExerciseList)
+                {
+                    Console.WriteLine($"{stuEx.ExerciseName}");
+                }
+                Console.WriteLine();
+            }
+
         }
     }
 }

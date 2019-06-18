@@ -9,13 +9,14 @@ namespace StudentExercises
     {
 
         //Constructor for Instructor
-        public Instructor(int id, string firstName, string lastName, string slack, string speciality)
+        public Instructor(int id, string firstName, string lastName, string slack, string speciality, int cohortId)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
             SlackHandle = slack;
             Speciality = speciality;
+            CohortId = cohortId;
         }
 
         //create properties
@@ -27,7 +28,7 @@ namespace StudentExercises
 
         public string Speciality { get; set; }
 
-        public Cohort Cohort { get; set; }
+        public int CohortId { get; set; }
 
         //create a method for assigning exercises to students.
         public void AssignExercise(Student student, Exercise exercise){
