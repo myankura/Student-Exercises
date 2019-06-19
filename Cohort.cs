@@ -16,7 +16,6 @@ namespace StudentExercises
 
         //create properties
         public int Id { get; set; }
-
         public string CohortName { get; set; }
 
         //Create a list of students
