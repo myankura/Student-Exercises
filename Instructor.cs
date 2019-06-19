@@ -5,7 +5,7 @@ namespace StudentExercises
 {
 
     //Define class
-    class Instructor
+    class Instructor : NSSPerson
     {
 
         //Constructor for Instructor
@@ -21,10 +21,6 @@ namespace StudentExercises
 
         //create properties
         public int Id { get; set; }
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string SlackHandle { get; set; }
         public string Speciality { get; set; }
         public int CohortId { get; set; }
 
