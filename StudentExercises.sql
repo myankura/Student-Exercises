@@ -1,6 +1,7 @@
-
+--create the database 
 CREATE DATABASE StudentExercises
 
+-- create all of the necessary tables for the database
 CREATE TABLE Student (
     Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
     FirstName VARCHAR(55) NOT NULL,
@@ -45,6 +46,7 @@ SELECT * FROM Student;
 SELECT * FROM Instructor;
 SELECT * FROM Exercise;
 
+-- insert values into cohort table
 INSERT INTO Cohort (CohortName)
 VALUES ('C31');
 
@@ -54,6 +56,7 @@ VALUES ('C32');
 INSERT INTO Cohort (CohortName)
 VALUES ('C33');
 
+-- insert values into student table
 INSERT INTO Student (FirstName, LastName, SlackHandle, CohortId)
 VALUES ('Juan', 'Solo', 'juan.solo', 1);
 
@@ -69,6 +72,7 @@ VALUES ('Billy', 'Mays', 'billy.mays', 1);
 INSERT INTO Student (FirstName, LastName, SlackHandle, CohortId)
 VALUES ('Tom', 'Foolery', 'tom', 1);
 
+-- insert values into exercise table
 INSERT INTO Exercise (ExerciseName, LanguageUsed)
 VALUES ('Lists', 'C#');
 
@@ -84,6 +88,7 @@ VALUES ('Daily Journal', 'JavaScript');
 INSERT INTO Exercise (ExerciseName, LanguageUsed)
 VALUES ('Chicken Monkey', 'JavaScript');
 
+-- insert values into instructor table
 INSERT INTO Instructor (FirstName, LastName, SlackHandle, Speciality, CohortId)
 VALUES ('Andy', 'Collins', 'andy.collins', 'Jokes', 1);
 
@@ -96,6 +101,7 @@ VALUES ('Joe', 'Shepherd', 'joe.shep', 'Dad Jokes', 2);
 INSERT INTO Instructor (FirstName, LastName, SlackHandle, Speciality, CohortId)
 VALUES ('Steve', 'Brownlee', 'coach', 'Dad Jokes', 1);
 
+--insert values into studentexercise table
 INSERT INTO StudentExercise (StudentId, ExerciseId)
 VALUES (1, 1);
 
