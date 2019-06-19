@@ -10,29 +10,18 @@ namespace StudentExercises
         {
             //create exercises
             Exercise lists = new Exercise(1, "Lists", "C#");
-
             Exercise classes = new Exercise(2, "Classes", "C#");
-
             Exercise dictionaries = new Exercise(3, "Dictionaries", "C#");
-
             Exercise dailyJournal = new Exercise(4, "Daily Journal", "JavaScript");
-
             Exercise chickenMonkey = new Exercise(5, "Chicken Monkey", "JavaScript");
 
             List<Exercise> exercises = new List<Exercise>() {
                 lists, classes, dictionaries, dailyJournal, chickenMonkey
             };
 
-            
-
-            
-
-
             //create cohorts
             Cohort c31 = new Cohort(31, "C31");
-
             Cohort c32 = new Cohort(32, "C32");
-
             Cohort c33 = new Cohort(33, "C33");
 
             List<Cohort> cohorts = new List<Cohort>(){
@@ -42,13 +31,9 @@ namespace StudentExercises
 
             //create students
             Student juan = new Student(1, "Juan", "Solo", "juan.solo", 31);
-
             Student ken = new Student(2, "Ken", "M", "ken.m", 32);
-
             Student mike = new Student(3, "Mike", "Jones", "mike.jones", 33);
-
             Student billy = new Student(4, "Billy", "Mays", "billy.mays", 31);
-
             Student tom = new Student(5, "Tom", "Foolery", "tom", 31);
 
             List<Student> students = new List<Student>() {
@@ -57,9 +42,7 @@ namespace StudentExercises
 
             //create instructors
             Instructor andy = new Instructor(1, "Andy", "Collins", "andy.collins", "Jokes", 31);
-
             Instructor jisie = new Instructor(2, "Jisie", "David", "jisie", "Sneaking up on people in a boot.", 33);
-
             Instructor joe = new Instructor(3, "Joe", "Sheppard", "joe.shep", "Dad Jokes", 32);
 
             List<Instructor> instructors = new List<Instructor>() {
@@ -72,13 +55,11 @@ namespace StudentExercises
             c31.StudentList.Add(mike);
             c31.StudentList.Add(billy);
             c32.StudentList.Add(tom);
-            
 
             //assign instructors to a cohort
             c31.InstructorList.Add(andy);
             c31.InstructorList.Add(jisie);
             c31.InstructorList.Add(joe);
-            
 
             //assign exercises to students
             andy.AssignExercise(juan, lists);
@@ -107,8 +88,6 @@ namespace StudentExercises
             joe.AssignExercise(mike, dailyJournal);
             joe.AssignExercise(billy, classes);
             joe.AssignExercise(mike, dictionaries);
-
-
 
             //1. List exercises for the JavaScript language by using the Where() LINQ method.
             IEnumerable<Exercise> jsExercises =
@@ -181,32 +160,50 @@ namespace StudentExercises
 
             //6. Which student is working on the most exercises? Make sure one of your 
             //students has more exercises than the others.
-            IEnumerable<Student> stuWithMostExercises =
-                (from ex in students
-                 where ex.ExerciseList
-                 select ex).Max();
-
-            //int mostExercises =
-            //    (from ex in students
-            //     where ex.ExerciseList
-            //     select ex).Max();
-
-
-
-
-
+            Student mostEx = students.OrderByDescending(s => s.ExerciseList.Count).First();
+            Console.WriteLine("The student with the most exercises is:");
+            Console.WriteLine($"{mostEx.FirstName} {mostEx.LastName}");
+            Console.WriteLine();
 
             //Create a report of all the exercises students are currently working on.
             foreach (Student stu in students)
             {
-                Console.WriteLine($"{stu.FirstName} {stu.LastName} is currently working on: ");
+                Console.WriteLine();
+                Console.WriteLine($"{stu.FirstName} {stu.LastName} is currently working on:");
                 foreach(Exercise stuEx in stu.ExerciseList)
                 {
                     Console.WriteLine($"{stuEx.ExerciseName}");
                 }
-                Console.WriteLine();
             }
 
+            //7. How many students in each cohort?
+            //var numStudents = (from s in cohorts
+            //                   select s.CohortName).Count();
+
+
+            //foreach(Cohort chrt in numStudents)
+            // {
+            //     Console.WriteLine($"{chrt.CohortName} has {chrt.StudentList}");
+            // }
+            //IEnumerable<Cohort> numStudents =
+            //     (from chrt in cohorts
+            //      orderby chrt.CohortName
+            //      select chrt).Count();
+            //foreach(Cohort c in numStudents)
+            //{
+            //    Console.WriteLine($"{c.CohortName} has {c.StudentList} students");
+            //};
+            //List<Student> countStu =
+            //    (from student in students
+            //     join Cohort in students
+            //     on student.CohortId equals Cohort.Id
+            //     select student);
+
+            Console.WriteLine("Count the number of students in each cohort");
+            foreach(Cohort stu in cohorts)
+            {
+                Console.WriteLine($"{stu.CohortName} has {stu.StudentList.Count()} students");
+            }
         }
     }
 }
