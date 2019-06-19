@@ -18,9 +18,7 @@ namespace StudentExercises
 
         //create properties
         public int Id { get; set; }
-
         public string ExerciseName { get; set; }
-
         public string Language { get; set; }
 
         ////create a list of students

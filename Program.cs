@@ -15,6 +15,7 @@ namespace StudentExercises
             Exercise dailyJournal = new Exercise(4, "Daily Journal", "JavaScript");
             Exercise chickenMonkey = new Exercise(5, "Chicken Monkey", "JavaScript");
 
+            //add exercises to list
             List<Exercise> exercises = new List<Exercise>() {
                 lists, classes, dictionaries, dailyJournal, chickenMonkey
             };
@@ -24,6 +25,7 @@ namespace StudentExercises
             Cohort c32 = new Cohort(32, "C32");
             Cohort c33 = new Cohort(33, "C33");
 
+            //add cohorts to list
             List<Cohort> cohorts = new List<Cohort>(){
                 c31, c32, c33
             };
@@ -36,6 +38,7 @@ namespace StudentExercises
             Student billy = new Student(4, "Billy", "Mays", "billy.mays", 31);
             Student tom = new Student(5, "Tom", "Foolery", "tom", 31);
 
+            //add students to list
             List<Student> students = new List<Student>() {
                 juan, ken, mike, billy, tom
             };
@@ -177,28 +180,7 @@ namespace StudentExercises
             }
 
             //7. How many students in each cohort?
-            //var numStudents = (from s in cohorts
-            //                   select s.CohortName).Count();
-
-
-            //foreach(Cohort chrt in numStudents)
-            // {
-            //     Console.WriteLine($"{chrt.CohortName} has {chrt.StudentList}");
-            // }
-            //IEnumerable<Cohort> numStudents =
-            //     (from chrt in cohorts
-            //      orderby chrt.CohortName
-            //      select chrt).Count();
-            //foreach(Cohort c in numStudents)
-            //{
-            //    Console.WriteLine($"{c.CohortName} has {c.StudentList} students");
-            //};
-            //List<Student> countStu =
-            //    (from student in students
-            //     join Cohort in students
-            //     on student.CohortId equals Cohort.Id
-            //     select student);
-
+            Console.WriteLine();
             Console.WriteLine("Count the number of students in each cohort");
             foreach(Cohort stu in cohorts)
             {

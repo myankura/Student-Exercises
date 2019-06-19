@@ -22,7 +22,6 @@ namespace StudentExercises
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string SlackHandle { get; set; }
-
         public int CohortId { get; set; }
 
         //Create a list of assignments the student is currently working on
