@@ -1,21 +1,23 @@
 using System;
 using System.Collections.Generic;
 
-namespace StudentExercises
+namespace StudentExercises.Models
 {
 
     //Define class
-    class Cohort
+    public class Cohort
     {
+
         //Constructor for Cohort
-        public Cohort(int id, string cohortName)
-        {
-            Id = id;
-            CohortName = cohortName;
-        }
+        //public Cohort(int id, string cohortName)
+        //{
+        //    Id = id;
+        //    CohortName = cohortName;
+        //}
 
         //create properties
         public int Id { get; set; }
+
         public string CohortName { get; set; }
 
         //Create a list of students

@@ -1,23 +1,24 @@
 using System;
 using System.Collections.Generic;
 
-namespace StudentExercises
+namespace StudentExercises.Models
 {
 
     //Define class
-    class Instructor : NSSPerson
+    public class Instructor : NSSPerson
     {
 
         //Constructor for Instructor
-        public Instructor(int id, string firstName, string lastName, string slack, string speciality, int cohortId)
-        {
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            SlackHandle = slack;
-            Speciality = speciality;
-            CohortId = cohortId;
-        }
+        //public Instructor(int id, string firstName, string lastName, string slack, string speciality, int cohortId)
+        //{
+        //    Id = id;
+        //    FirstName = firstName;
+        //    LastName = lastName;
+        //    SlackHandle = slack;
+        //    Speciality = speciality;
+        //    CohortId = cohortId;
+        //}
+
 
         //create properties
         public int Id { get; set; }

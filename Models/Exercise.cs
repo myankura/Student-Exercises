@@ -1,20 +1,19 @@
 using System;
 using System.Collections.Generic;
 
-namespace StudentExercises
+namespace StudentExercises.Models
 {
 
     //Define class
-    class Exercise
+    public class Exercise
     {
 
         //Constructor for Exercise
-        public Exercise(int id, string exercise, string language)
-        {
-            Id = id;
-            ExerciseName = exercise;
-            Language = language;
-        }
+        //public Exercise( string exercise, string language)
+        //{
+        //    ExerciseName = exercise;
+        //    Language = language;
+        //}
 
         //create properties
         public int Id { get; set; }

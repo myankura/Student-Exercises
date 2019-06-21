@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentExercises
+namespace StudentExercises.Models
 {
-    class NSSPerson
+    public class NSSPerson
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
